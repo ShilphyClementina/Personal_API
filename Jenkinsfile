@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'NodeJS_18'   // must match the NodeJS tool name you configured in Jenkins
+        nodejs 'NodeJS_18'   // must match your NodeJS tool name in Jenkins
     }
 
     stages {
@@ -20,7 +20,23 @@ pipeline {
 
         stage('Run Newman Tests') {
             steps {
-                bat 'newman run "Users API.postman_collection.json" -e "TEST1.postman_environment.json"'
+                // Run Newman and export results in JUnit + HTML format
+                bat '''
+                newman run "Users API.postman_collection.json" -e "TEST1.postman_environment.json" ^
+                  --reporters cli,junit,html ^
+                  --reporter-junit-export results.xml ^
+                  --reporter-html-export results.html
+                '''
+            }
+        }
+
+        stage('Publish Reports') {
+            steps {
+                // Publish JUnit results
+                junit 'results.xml'
+
+                // Archive HTML report so you can download/view it
+                archiveArtifacts artifacts: 'results.html', fingerprint: true
             }
         }
     }
