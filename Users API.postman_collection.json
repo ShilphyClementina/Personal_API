@@ -1,0 +1,222 @@
+{
+  "info": {
+    "_postman_id": "123eb5e1-f43f-4b2d-a190-3422e0b9c542",
+    "name": "Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "8611820"
+  },
+  "item": [
+    {
+      "name": "POST_UserRegistration",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "type": "text",
+              "key": "name",
+              "value": "test"
+            },
+            {
+              "type": "text",
+              "key": "email",
+              "value": "test123@test.com"
+            },
+            {
+              "type": "text",
+              "key": "password",
+              "value": "test@123"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://practice.expandtesting.com/notes/api/users/register",
+          "protocol": "https",
+          "host": [
+            "practice",
+            "expandtesting",
+            "com"
+          ],
+          "path": [
+            "notes",
+            "api",
+            "users",
+            "register"
+          ]
+        },
+        "description": "Generated from cURL: curl -X 'POST' \\\r\n  'https://practice.expandtesting.com/notes/api/users/register' \\\r\n  -H 'accept: application/json' \\\r\n  -H 'Content-Type: application/x-www-form-urlencoded' \\\r\n  -d 'name=test&email=test123%40test.com&password=test%40123'"
+      },
+      "response": []
+    },
+    {
+      "name": "POST_Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "type": "text",
+              "key": "email",
+              "value": "test123@test.com"
+            },
+            {
+              "type": "text",
+              "key": "password",
+              "value": "test@123"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://practice.expandtesting.com/notes/api/users/login",
+          "protocol": "https",
+          "host": [
+            "practice",
+            "expandtesting",
+            "com"
+          ],
+          "path": [
+            "notes",
+            "api",
+            "users",
+            "login"
+          ]
+        },
+        "description": "Generated from cURL: curl -X 'POST' \\\r\n  'https://practice.expandtesting.com/notes/api/users/login' \\\r\n  -H 'accept: application/json' \\\r\n  -H 'Content-Type: application/x-www-form-urlencoded' \\\r\n  -d 'email=test123%40test.com&password=test%40123'"
+      },
+      "response": []
+    },
+    {
+      "name": "GET_UserProfile",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "https://practice.expandtesting.com/notes/api/users/profile",
+          "protocol": "https",
+          "host": [
+            "practice",
+            "expandtesting",
+            "com"
+          ],
+          "path": [
+            "notes",
+            "api",
+            "users",
+            "profile"
+          ]
+        },
+        "description": "Generated from cURL: curl -X 'GET' \\\r\n  'https://practice.expandtesting.com/notes/api/users/profile' \\\r\n  -H 'accept: application/json'"
+      },
+      "response": []
+    },
+    {
+      "name": "PATCH_UpdateProfile",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "type": "text",
+              "key": "name",
+              "value": "test"
+            },
+            {
+              "type": "text",
+              "key": "phone",
+              "value": "9876543210"
+            },
+            {
+              "type": "text",
+              "key": "company",
+              "value": "test"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://practice.expandtesting.com/notes/api/users/profile",
+          "protocol": "https",
+          "host": [
+            "practice",
+            "expandtesting",
+            "com"
+          ],
+          "path": [
+            "notes",
+            "api",
+            "users",
+            "profile"
+          ]
+        },
+        "description": "Generated from cURL: curl -X 'PATCH' \\\r\n  'https://practice.expandtesting.com/notes/api/users/profile' \\\r\n  -H 'accept: application/json' \\\r\n  -H 'Content-Type: application/x-www-form-urlencoded' \\\r\n  -d 'name=test&phone=9876543210&company=test'"
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE_Logout",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "https://practice.expandtesting.com/notes/api/users/logout",
+          "protocol": "https",
+          "host": [
+            "practice",
+            "expandtesting",
+            "com"
+          ],
+          "path": [
+            "notes",
+            "api",
+            "users",
+            "logout"
+          ]
+        },
+        "description": "Generated from cURL: curl -X 'DELETE' \\\r\n  'https://practice.expandtesting.com/notes/api/users/logout' \\\r\n  -H 'accept: application/json'"
+      },
+      "response": []
+    }
+  ]
+}
