@@ -1,33 +1,46 @@
 pipeline {
     agent any
-    tools {
-        nodejs 'NodeJS_18'
-    }
+
     stages {
-        stage('Checkout') {
+        stage('Checkout SCM') {
             steps {
-                checkout scm
+                // Explicit checkout of full repo
+                checkout([$class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[url: 'https://github.com/ShilphyClementina/Personal_API.git']]
+                ])
+
+                // Debug: list files to confirm environment.json is present
+                bat 'dir'
             }
         }
-        stage('Install Newman') {
+
+        stage('Install Newman & Reporters') {
             steps {
-                bat 'npm install -g newman'
+                bat 'npm install -g newman newman-reporter-html'
             }
         }
+
         stage('Run Newman Tests') {
             steps {
+                // Ensure results directory exists
+                bat 'mkdir results'
+
+                // Run collection with environment file
                 bat '''
-                npx newman run "Users API.postman_collection.json" -e "TEST1.postman_environment.json" ^
-                  --reporters cli,junit,html ^
-                  --reporter-junit-export "results/results.xml" ^
-                  --reporter-html-export "results/results.html"
+                    npx newman run "Users API.postman_collection.json" ^
+                        -e "TEST1.postman_environment.json" ^
+                        --reporters cli,junit,html ^
+                        --reporter-junit-export "results/results.xml" ^
+                        --reporter-html-export "results/results.html"
                 '''
             }
         }
+
         stage('Publish Reports') {
             steps {
                 junit 'results/results.xml'
-                archiveArtifacts artifacts: 'results/results.html', fingerprint: true
+                publishHTML([reportDir: 'results', reportFiles: 'results.html', reportName: 'API Test Report'])
             }
         }
     }
