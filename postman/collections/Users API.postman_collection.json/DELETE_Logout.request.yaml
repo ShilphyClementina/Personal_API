@@ -1,0 +1,21 @@
+$kind: http-request
+name: DELETE_Logout
+description: "Generated from cURL: curl -X 'DELETE' \\\r
+
+  \  'https://practice.expandtesting.com/notes/api/users/logout' \\\r
+
+  \  -H 'accept: application/json'"
+url: "{{Base_URI}}{{Logout}}"
+method: DELETE
+headers:
+  accept: application/json
+  x-auth-token: "{{Token}}"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code check\", function(){\r
+
+      \    pm.response.to.have.status(200);\r
+
+      })"
+    language: text/javascript
+order: 5000

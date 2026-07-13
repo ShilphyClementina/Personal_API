@@ -1,0 +1,4 @@
+name: TEST2
+values:
+  - key: Base_URI
+    value: ''

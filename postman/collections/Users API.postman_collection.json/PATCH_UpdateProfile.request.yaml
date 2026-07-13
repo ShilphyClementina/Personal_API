@@ -1,0 +1,32 @@
+$kind: http-request
+name: PATCH_UpdateProfile
+description: "Generated from cURL: curl -X 'PATCH' \\\r
+
+  \  'https://practice.expandtesting.com/notes/api/users/profile' \\\r
+
+  \  -H 'accept: application/json' \\\r
+
+  \  -H 'Content-Type: application/x-www-form-urlencoded' \\\r
+
+  \  -d 'name=test&phone=9876543210&company=test'"
+url: "{{Base_URI}}{{User_Profile}}"
+method: PATCH
+headers:
+  accept: application/json
+  Content-Type: application/x-www-form-urlencoded
+  x-auth-token: "{{Token}}"
+body:
+  type: urlencoded
+  content:
+    name: "{{$randomLastName}}"
+    phone: "9876543210"
+    company: "{{$randomCompanyName}}"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code check\", function(){\r
+
+      \    pm.response.to.have.status(200);\r
+
+      })"
+    language: text/javascript
+order: 4000

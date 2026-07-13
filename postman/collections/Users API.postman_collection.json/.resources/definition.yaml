@@ -1,0 +1,9 @@
+$kind: collection
+name: Users API
+variables:
+  User_Registration: ""
+  Email: ""
+  Login: ""
+  Token: ""
+  User_Profile: ""
+  Logout: ""

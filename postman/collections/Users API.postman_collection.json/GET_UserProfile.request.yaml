@@ -1,0 +1,21 @@
+$kind: http-request
+name: GET_UserProfile
+description: "Generated from cURL: curl -X 'GET' \\\r
+
+  \  'https://practice.expandtesting.com/notes/api/users/profile' \\\r
+
+  \  -H 'accept: application/json'"
+url: "{{Base_URI}}{{User_Profile}}"
+method: GET
+headers:
+  accept: application/json
+  x-auth-token: "{{Token}}"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code check\", function(){\r
+
+      \    pm.response.to.have.status(200);\r
+
+      })"
+    language: text/javascript
+order: 3000

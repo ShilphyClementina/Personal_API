@@ -1,0 +1,15 @@
+workspace:
+  id: 34517f0a-f479-4b63-a4c5-f26d35517efa
+
+localResources:
+  collections:
+    - ../Users API.postman_collection.json
+  environments:
+    - ../TEST1.postman_environment.json
+    - ../TEST2.postman_environment.json
+
+# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
+
+cloudResources:
+  collections:
+    ../postman/collections/Users API.postman_collection.json: 8611820-123eb5e1-f43f-4b2d-a190-3422e0b9c542

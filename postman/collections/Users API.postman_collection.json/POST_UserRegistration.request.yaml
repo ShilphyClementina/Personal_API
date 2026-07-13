@@ -1,0 +1,41 @@
+$kind: http-request
+name: POST_UserRegistration
+description: "Generated from cURL: curl -X 'POST' \\\r
+
+  \  'https://practice.expandtesting.com/notes/api/users/register' \\\r
+
+  \  -H 'accept: application/json' \\\r
+
+  \  -H 'Content-Type: application/x-www-form-urlencoded' \\\r
+
+  \  -d 'name=test&email=test123%40test.com&password=test%40123'"
+url: "{{Base_URI}}{{User_Registration}}"
+method: POST
+headers:
+  accept: application/json
+  Content-Type: application/x-www-form-urlencoded
+body:
+  type: urlencoded
+  content:
+    name: "{{$randomFirstName}}"
+    email: "{{$randomEmail}}"
+    password: test@123
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code check\", function(){\r
+
+      \    pm.response.to.have.status(201);\r
+
+      })\r
+
+      \r
+
+      pm.test(\"Set Email\",function(){\r
+
+      \    var response = pm.response.json();\r
+
+      \    pm.collectionVariables.set(\"Email\", response.data.email);\r
+
+      })"
+    language: text/javascript
+order: 1000
